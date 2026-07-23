@@ -1,12 +1,11 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import api from "../api/axios";
-import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     api
@@ -36,15 +35,8 @@ export default function Products() {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-orange-600">Browse Products</h1>
-          <button
-            onClick={() => navigate("/orders")}
-            className="text-orange-600 font-medium"
-          >
-            My Orders
-          </button>
-        </div>
+        <Navbar />
+        <h2 className="text-lg font-semibold text-gray-700 mb-4">Browse Products</h2>
 
         {message && (
           <p className="bg-green-100 text-green-700 text-sm p-2 rounded mb-4">
@@ -75,4 +67,4 @@ export default function Products() {
       </div>
     </div>
   );
-}
+} 
